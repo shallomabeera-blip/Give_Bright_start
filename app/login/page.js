@@ -1,0 +1,1 @@
+export default function Login(){return <main className="container"><div className="card" style={{maxWidth:520,margin:"auto"}}><h1>Welcome back</h1><div className="field"><label>Email</label><input type="email"/></div><div className="field"><label>Password</label><input type="password"/></div><button className="btn primary">Log in</button></div></main>}

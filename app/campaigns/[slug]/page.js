@@ -1,0 +1,1 @@
+export default async function Campaign({params}){const {slug}=await params;return <main className="container"><div className="card"><small>CAMPAIGN</small><h1>{slug.replaceAll("-"," ")}</h1><p>This is the public campaign route. Connect it to Supabase to load real campaign data.</p><button className="btn primary">Donate</button></div></main>}

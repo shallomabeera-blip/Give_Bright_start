@@ -1,0 +1,1 @@
+export default function Admin(){return <main className="container"><div className="card"><h1>GiveBright Admin</h1><p>Production admin area: campaign review, reports, refunds/disputes, user restrictions, verification status and audit logs.</p></div></main>}
