@@ -1,7 +1,8 @@
+import Link from "next/link";
 import "./globals.css";
 
 export const metadata = {
-  title: "GiveBright — Fundraising made human",
+  title: "GiveBright — Small gestures, real impact",
   description: "Create and support fundraisers with GiveBright.",
 };
 
@@ -10,35 +11,35 @@ export default function Layout({ children }) {
     <html lang="en">
       <body>
         <header>
-          <a className="brand" href="/">
+          <Link className="brand" href="/">
             <span className="mark">G</span>
             <span>GiveBright</span>
-          </a>
+          </Link>
 
           <nav>
-            <a href="/campaigns">Discover</a>
-            <a href="/create">Start a fundraiser</a>
-            <a href="/dashboard">Dashboard</a>
-            <a className="outline" href="/login">Log in</a>
-            <a className="primary" href="/signup">Sign up</a>
+            <Link href="/campaigns">Home</Link>
+            <Link href="/signup?next=/create">Start a fundraiser</Link>
+            <Link href="/dashboard">Dashboard</Link>
+            <Link className="outline" href="/login">Log in</Link>
+            <Link className="primary" href="/signup">Sign up</Link>
           </nav>
         </header>
 
         {children}
 
         <footer>
-          <a href="/">
+          <Link href="/">
             <b>GiveBright</b>
-          </a>
+          </Link>
 
-          <span>Fundraising made human.</span>
+          <span>Small gestures, real impact</span>
 
           <div>
-            <a href="/trust-safety">Trust & Safety</a>
+            <Link href="/trust-safety">Trust & Safety</Link>
             {" · "}
-            <a href="/terms">Terms</a>
+            <Link href="/terms">Terms</Link>
             {" · "}
-            <a href="/privacy">Privacy</a>
+            <Link href="/privacy">Privacy</Link>
           </div>
         </footer>
       </body>
