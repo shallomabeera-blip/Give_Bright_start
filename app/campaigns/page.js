@@ -36,11 +36,25 @@ export default function Campaigns() {
           <aside style={{ position: "sticky", top: 96, background: "#fff", border: "1px solid #dfeafc", borderRadius: 22, padding: 24, boxShadow: "0 10px 30px rgba(11,110,243,.08)" }}>
             <div style={{ color: "#60789a", marginBottom: 12 }}><strong style={{ color: "#163456", fontSize: 24 }}>$0.00</strong> raised of $30,000.00 goal</div>
             <div className="bar"><i style={{ width: "0%" }} /></div>
-            <Link href="/campaigns/zachary-gulini" style={{ display: "block", marginTop: 20, padding: "14px 18px", borderRadius: 11, background: "#0b6ef3", color: "#fff", textAlign: "center", fontWeight: 800, textDecoration: "none" }}>Donate now</Link>
+            <Link href="/donate/zachary-gulini" style={{ display: "block", marginTop: 20, padding: "14px 18px", borderRadius: 11, background: "#0b6ef3", color: "#fff", textAlign: "center", fontWeight: 800, textDecoration: "none" }}>Donate now</Link>
             <button type="button" onClick={() => navigator.clipboard?.writeText(window.location.href)} style={{ width: "100%", marginTop: 10, padding: "12px 18px", border: "1px solid #d7e8ff", borderRadius: 11, background: "#edf5ff", color: "#0b6ef3", fontWeight: 800, cursor: "pointer" }}>Share fundraiser</button>
 
             <div style={{ marginTop: 24, paddingTop: 18, borderTop: "1px solid #edf3ff", color: "#60789a", lineHeight: 1.6 }}><strong style={{ color: "#163456" }}>Your donation is protected.</strong><br />If something isn&apos;t right, we will refund your donation.</div>
           </aside>
+        </section>
+
+        <section style={{ marginTop: 48 }}>
+          <div style={{ maxWidth: 680, marginBottom: 22 }}>
+            <div style={{ color: "#0b6ef3", fontSize: 12, fontWeight: 800, letterSpacing: 1.5, textTransform: "uppercase" }}>Find your cause</div>
+            <h2 style={{ margin: "10px 0 8px", color: "#163456", fontSize: "clamp(1.8rem, 4vw, 2.8rem)", letterSpacing: -1 }}>Choose the kind of support you want to give.</h2>
+            <p style={{ margin: 0, color: "#60789a", lineHeight: 1.7 }}>Every fundraiser begins with a human need. Explore a starting point and discover the stories connected to it.</p>
+          </div>
+          <div className="cause-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, minmax(0, 1fr))", gap: 16 }}>
+            <article id="medical-care" className="card" style={{ scrollMarginTop: 96 }}><img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=700&auto=format&fit=crop" alt="Medical care" style={{ width: "100%", height: 150, objectFit: "cover", borderRadius: 10 }} /><h3>Medical care</h3><p>Support treatment, rehabilitation, transportation, and the people making healing possible.</p><Link href="/campaigns/zachary-gulini" style={{ color: "#0b6ef3", fontWeight: 800 }}>See a medical story →</Link></article>
+            <article id="emergency-help" className="card" style={{ scrollMarginTop: 96 }}><img src="https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=700&auto=format&fit=crop" alt="Emergency help" style={{ width: "100%", height: 150, objectFit: "cover", borderRadius: 10 }} /><h3>Emergency help</h3><p>Find fast support for urgent needs, unexpected costs, and sudden change.</p><Link href="/create" style={{ color: "#0b6ef3", fontWeight: 800 }}>Start an urgent fundraiser →</Link></article>
+            <article id="education" className="card" style={{ scrollMarginTop: 96 }}><img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=700&auto=format&fit=crop" alt="Education" style={{ width: "100%", height: 150, objectFit: "cover", borderRadius: 10 }} /><h3>Education</h3><p>Help learners access supplies, tuition, technology, and opportunity.</p><Link href="/create" style={{ color: "#0b6ef3", fontWeight: 800 }}>Create an education fundraiser →</Link></article>
+            <article id="family-support" className="card" style={{ scrollMarginTop: 96 }}><img src="https://images.unsplash.com/photo-1494386346843-e12284507169?q=80&w=700&auto=format&fit=crop" alt="Family support" style={{ width: "100%", height: 150, objectFit: "cover", borderRadius: 10 }} /><h3>Family support</h3><p>Make room for housing, childcare, food, and the everyday needs of a family.</p><Link href="/create" style={{ color: "#0b6ef3", fontWeight: 800 }}>Help a family get started →</Link></article>
+          </div>
         </section>
       </div>
     </main>

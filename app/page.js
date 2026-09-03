@@ -1,5 +1,32 @@
 import Link from "next/link";
 
+const causeFields = [
+  {
+    id: "medical-care",
+    title: "Medical care",
+    text: "Help someone reach treatment, recovery, and the care they need.",
+    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=700&auto=format&fit=crop",
+  },
+  {
+    id: "emergency-help",
+    title: "Emergency help",
+    text: "Stand beside people facing an urgent turn in the road.",
+    image: "https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=700&auto=format&fit=crop",
+  },
+  {
+    id: "education",
+    title: "Education",
+    text: "Open doors for students, classrooms, and brighter futures.",
+    image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=700&auto=format&fit=crop",
+  },
+  {
+    id: "family-support",
+    title: "Family support",
+    text: "Give families room to breathe through difficult seasons.",
+    image: "https://images.unsplash.com/photo-1494386346843-e12284507169?q=80&w=700&auto=format&fit=crop",
+  },
+];
+
 export default function Home() {
   return (
     <main>
@@ -43,14 +70,13 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       <section className="container" style={{ paddingTop: 62, paddingBottom: 70 }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "end", gap: 20, flexWrap: "wrap", marginBottom: 24 }}>
           <div><small style={{ color: "#0b6ef3", fontWeight: 800, letterSpacing: 1.5 }}>START WHERE IT MATTERS</small><h2 style={{ margin: "10px 0 0" }}>Support a cause close to home.</h2></div>
           <Link href="/campaigns" style={{ color: "#0b6ef3", fontWeight: 800 }}>Browse all fundraisers →</Link>
         </div>
         <div className="category-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, minmax(0, 1fr))", gap: 14 }}>
-          {["Medical care", "Emergency help", "Education", "Family support"].map((category) => <Link key={category} href="/campaigns" className="card" style={{ textDecoration: "none", minHeight: 105, display: "flex", flexDirection: "column", justifyContent: "space-between" }}><strong>{category}</strong><span style={{ color: "#0b6ef3", fontSize: 13 }}>Explore stories →</span></Link>)}
+            {causeFields.map((cause) => <Link key={cause.id} href={`/campaigns#${cause.id}`} className="card" style={{ padding: 0, overflow: "hidden", textDecoration: "none" }}><img src={cause.image} alt={cause.title} style={{ width: "100%", height: 130, objectFit: "cover" }} /><div style={{ padding: 16 }}><strong>{cause.title}</strong><p style={{ margin: "8px 0 14px", color: "#60789a", fontSize: 14, lineHeight: 1.5 }}>{cause.text}</p><span style={{ color: "#0b6ef3", fontSize: 13, fontWeight: 800 }}>Explore stories →</span></div></Link>)}
         </div>
       </section>
 

@@ -14,7 +14,7 @@ export async function POST(req) {
 		mode: "payment",
 		line_items: [{ price_data: { currency, product_data: { name: "GiveBright donation" }, unit_amount: Math.round(amount * 100) }, quantity: 1 }],
 		metadata: { campaignId: String(campaignId || "") },
-		success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/?donated=1`,
+		success_url: `${process.env.NEXT_PUBLIC_SITE_URL}/campaigns/${campaignId || "zachary-gulini"}?donated=1&amount=${amount}`,
 		cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL}/?cancelled=1`,
 	});
 

@@ -1,15 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function Campaign({ params }) {
   const router = useRouter();
   const [shareMessage, setShareMessage] = useState("");
+  const searchParams = useSearchParams();
   const { slug } = params;
+  const donatedAmount = Number(searchParams.get("amount") || 0);
 
   const handleDonate = () => {
-    router.push("/login?next=/campaigns/" + slug);
+    router.push("/donate/" + slug);
   };
 
   const handleShare = async () => {
@@ -39,6 +41,7 @@ export default function Campaign({ params }) {
   return (
     <main style={{ background: "#f4f9ff", minHeight: "100vh", padding: "32px 20px 72px" }}>
       <div style={{ maxWidth: 1180, margin: "0 auto", display: "grid", gridTemplateColumns: "1.3fr 0.7fr", gap: 28 }}>
+        {searchParams.get("donated") === "1" && <div role="status" style={{ gridColumn: "1 / -1", background: "#eaf7ef", border: "1px solid #b8e0c5", color: "#176b35", borderRadius: 14, padding: "14px 18px", fontWeight: 700 }}>Donation successful. Thank you for supporting Zachary and his son.</div>}
         <section style={{ background: "#fff", border: "1px solid #dfeafc", borderRadius: 22, overflow: "hidden", boxShadow: "0 10px 30px rgba(11,110,243,.08)" }}>
           <div style={{ position: "relative" }}>
             <img
@@ -114,11 +117,11 @@ export default function Campaign({ params }) {
         <aside style={{ display: "flex", flexDirection: "column", gap: 18 }}>
           <div style={{ background: "#fff", border: "1px solid #dfeafc", borderRadius: 22, padding: 22, boxShadow: "0 10px 30px rgba(11,110,243,.08)" }}>
             <div style={{ fontSize: 15, color: "#60789a", marginBottom: 10 }}>
-              <strong style={{ color: "#163456", fontSize: 18 }}>$0.00</strong> raised of $30,000.00 goal
+              <strong style={{ color: "#163456", fontSize: 18 }}>${donatedAmount.toFixed(2)}</strong> raised of $30,000.00 goal
             </div>
 
             <div className="bar" style={{ height: 10, background: "#edf4ff", borderRadius: 999, overflow: "hidden" }}>
-              <i style={{ display: "block", width: "0%", height: "100%", background: "#0b6ef3", borderRadius: 999 }} />
+              <i style={{ display: "block", width: `${Math.min((donatedAmount / 30000) * 100, 100)}%`, height: "100%", background: "#0b6ef3", borderRadius: 999 }} />
             </div>
 
             <button type="button" onClick={handleDonate} style={{ width: "100%", background: "#0b6ef3", color: "#fff", border: "none", borderRadius: 12, padding: "14px 18px", fontSize: 16, fontWeight: 800, marginTop: 18, cursor: "pointer" }}>

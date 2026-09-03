@@ -6,18 +6,22 @@ export async function GET() {
 		return NextResponse.json({ error: "Stripe onboarding is not configured." }, { status: 503 });
 	}
 
-	const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-	const account = await stripe.accounts.create({
-		controller: { requirement_collection: "stripe" },
-		capabilities: { card_payments: { requested: true }, transfers: { requested: true } },
-		business_type: "individual",
-	});
-	const link = await stripe.accountLinks.create({
-		account: account.id,
-		refresh_url: `${process.env.NEXT_PUBLIC_SITE_URL}/dashboard`,
-		return_url: `${process.env.NEXT_PUBLIC_SITE_URL}/dashboard`,
-		type: "account_onboarding",
-	});
+	try {
+		const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+		const account = await stripe.accounts.create({
+			controller: { requirement_collection: "stripe" },
+			capabilities: { card_payments: { requested: true }, transfers: { requested: true } },
+			business_type: "individual",
+		});
+		const link = await stripe.accountLinks.create({
+			account: account.id,
+			refresh_url: `${process.env.NEXT_PUBLIC_SITE_URL}/dashboard`,
+			return_url: `${process.env.NEXT_PUBLIC_SITE_URL}/dashboard`,
+			type: "account_onboarding",
+		});
 
-	return NextResponse.redirect(link.url);
+		return NextResponse.redirect(link.url);
+	} catch (error) {
+		return NextResponse.json({ error: error.message || "Stripe onboarding could not be started." }, { status: 502 });
+	}
 }
